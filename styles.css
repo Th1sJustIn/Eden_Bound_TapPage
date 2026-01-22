@@ -78,6 +78,7 @@ body {
     justify-content: flex-end;
     /* Align chips to bottom initially */
     align-items: center;
+    padding-top: 20vh;
     padding-bottom: 20vh;
     /* Adjust as needed */
     pointer-events: none;
