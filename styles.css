@@ -1,0 +1,167 @@
+:root {
+    --text-color: #ffffff;
+    --chip-bg: rgba(255, 255, 255, 0.1);
+    --chip-border: rgba(255, 255, 255, 0.2);
+    --chip-hover-bg: rgba(255, 255, 255, 0.2);
+    --font-family: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000;
+    /* Fallback */
+    color: var(--text-color);
+}
+
+/* Background Layers */
+.bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+#bg-blank {
+    background-image: url('assets/Eden_Bound_Blank_bg.png');
+    z-index: 1;
+}
+
+#bg-logo {
+    background-image: url('assets/Eden_Bound_Logo_bg.png');
+    z-index: 2;
+    transition: opacity 1s ease-in;
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
+    #bg-blank {
+        background-image: url('assets/Eden_Bound_Blank_full.png');
+    }
+
+    #bg-logo {
+        background-image: url('assets/Eden_Bound_Logo_full.png');
+    }
+}
+
+#bg-logo.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Content Container */
+.content-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Align chips to bottom initially */
+    align-items: center;
+    padding-bottom: 20vh;
+    /* Adjust as needed */
+    pointer-events: none;
+    /* Let clicks pass through until chips are ready */
+}
+
+/* Chips Wrapper */
+.chips-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 400px;
+    /* Mobile width constraint */
+    padding: 0 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    pointer-events: auto;
+}
+
+.logo-container {
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+    pointer-events: auto;
+}
+
+.logo-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.chips-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Chip Styles */
+.chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+    color: white;
+    background: var(--chip-bg);
+    border: 1px solid var(--chip-border);
+    padding: 16px 24px;
+    border-radius: 50px;
+    /* Full pill shape */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chip:hover {
+    background: var(--chip-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chip:active {
+    transform: translateY(0);
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Responsive Desktop Tweaks */
+@media (min-width: 768px) {
+    .content-container {
+        padding-bottom: 0;
+        justify-content: center;
+        /* Center vertically on desktop if preferred, or keep bottom */
+    }
+
+    .chips-wrapper {
+        max-width: 400px;
+        /* Slightly wider on desktop */
+    }
+
+    .chip {
+        padding: 18px 32px;
+        font-size: 1.2rem;
+    }
+}
