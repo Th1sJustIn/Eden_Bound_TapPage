@@ -25,6 +25,8 @@ body {
     overflow: hidden;
     /* Fallback */
     color: var(--text-color);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* Background Layers */
