@@ -96,8 +96,7 @@ body {
 
 .logo-container {
     opacity: 0;
-    margin-left: 4%;
-
+    margin-left: 1%;
     transition: opacity 0.8s ease-out;
     pointer-events: auto;
 }
